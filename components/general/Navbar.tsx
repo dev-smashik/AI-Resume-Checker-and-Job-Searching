@@ -35,6 +35,8 @@ export async function Navbar() {
         <Link href="/post-job" className={buttonVariants({ size: "lg" })}>
           Post Job
         </Link>
+
+
         {session?.user ? (
           <UserDropdown
             email={session.user.email as string}

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { prisma } from "@/app/utils/db";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,6 +29,11 @@ const aj = arcjet.withRule(
     allow: ["CATEGORY:SEARCH_ENGINE", "CATEGORY:PREVIEW"],
   })
 );
+
+export const metadata: Metadata = {
+  title: "View Job",
+  description: "Find your dream job",
+};
 
 async function getJob(jobId: string, userId?: string) {
   const [jobData, savedJob] = await Promise.all([
@@ -187,7 +193,7 @@ const JobIdPage = async ({ params }: { params: Params }) => {
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
                   Please let {jobData.company.name} know you found this job on
-                  JobMarshal. This helps us grow!
+                  Jobportal. This helps us grow!
                 </p>
               </div>
               <form>
@@ -267,7 +273,7 @@ const JobIdPage = async ({ params }: { params: Params }) => {
                   </p>
                 </div>
               </div>
-              {/*  <Button variant="outline" className="w-full">
+               {/* <Button variant="outline" className="w-full">
                 View company profile
               </Button> */}
             </div>
