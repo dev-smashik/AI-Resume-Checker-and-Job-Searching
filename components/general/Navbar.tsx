@@ -4,7 +4,7 @@ import { Button, buttonVariants } from "../ui/button";
 import Image from "next/image";
 import Logo from "@/public/logo.png";
 
-import { Menu } from "lucide-react";
+import { Menu,WandSparkles } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -32,10 +32,10 @@ export async function Navbar() {
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-5">
         <ThemeToggle />
-        <Link href="/post-job" className={buttonVariants({ size: "lg" })}>
-          Post Job
+        <Link href="/upload-resume" className={buttonVariants({ size: "lg" })}>
+          <WandSparkles className="mr-2 h-4 w-4" />
+           Check Resume with AI
         </Link>
-
 
         {session?.user ? (
           <UserDropdown
@@ -75,7 +75,7 @@ export async function Navbar() {
                   Job<span className="text-primary">Portal</span>
                 </SheetTitle>
                 <SheetDescription>
-                  Find or post your next job opportunity
+                  Find your next job opportunity
                 </SheetDescription>
               </SheetHeader>
 
@@ -87,10 +87,10 @@ export async function Navbar() {
                   Find New Job
                 </Link>
                 <Link
-                  href="/post-job"
+                  href="/upload-resume"
                   className="text-lg px-4 py-2 rounded-md bg-secondary hover:bg-secondary/80 transition-colors duration-200"
                 >
-                  Post a Job
+                  Upload Resume
                 </Link>
                 <Link
                   href="/login"
