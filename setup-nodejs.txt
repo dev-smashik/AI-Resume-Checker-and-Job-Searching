@@ -1,0 +1,3 @@
+pnpm run dev
+pnpm dlx prisma studio
+pnpm dlx inngest-cli@latest dev
