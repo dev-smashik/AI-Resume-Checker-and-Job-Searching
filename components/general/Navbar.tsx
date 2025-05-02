@@ -4,7 +4,7 @@ import { Button, buttonVariants } from "../ui/button";
 import Image from "next/image";
 import Logo from "@/public/logo.png";
 
-import { Menu,WandSparkles } from "lucide-react";
+import { Menu,Pen,WandSparkles } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -21,7 +21,7 @@ export async function Navbar() {
   const session = await auth();
 
   return (
-    <nav className="flex justify-between items-center py-5">
+    <nav className="max-w-7xl mx-auto flex justify-between items-center py-5">
       <Link href="/" className="flex items-center gap-2">
         <Image src={Logo} alt="Job Marshal Logo" width={40} height={40} />
         <h1 className="text-2xl font-bold">
@@ -31,12 +31,29 @@ export async function Navbar() {
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-5">
-        <ThemeToggle />
-        <Link href="/upload-resume" className={buttonVariants({ size: "lg" })}>
-          <WandSparkles className="mr-2 h-4 w-4" />
-           Check Resume with AI
+
+      <Link href="/">
+          {/* <WandSparkles className="mr-2 h-4 w-4" /> */}
+           Home
+        </Link>
+ 
+        <Link href="/upload-resume">
+          {/* <WandSparkles className="mr-2 h-4 w-4" /> */}
+           Check Resume
         </Link>
 
+        <Link href="/job-list">
+          {/* <WandSparkles className="mr-2 h-4 w-4" /> */}
+           Jobs
+        </Link>
+
+        <Link href="/post-job" className={buttonVariants({ size: "lg" })}>
+          {/* <Pen className="mr-2 h-4 w-4" /> */}
+           Post Job
+        </Link>
+
+
+        <ThemeToggle />
         {session?.user ? (
           <UserDropdown
             email={session.user.email as string}
@@ -92,6 +109,13 @@ export async function Navbar() {
                 >
                   Upload Resume
                 </Link>
+                <Link
+                  href="/post-job"
+                  className="text-lg px-4 py-2 rounded-md bg-secondary hover:bg-secondary/80 transition-colors duration-200"
+                >
+                  Post Job
+                </Link>
+                
                 <Link
                   href="/login"
                   className="text-lg px-4 py-2 rounded-md bg-secondary hover:bg-secondary/80 transition-colors duration-200"

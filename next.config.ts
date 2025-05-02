@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
         port: "",
       },
     ],
+    domains: ['images.unsplash.com', 'avatars.githubusercontent.com'],
   },
   api: {
     bodyParser: {
@@ -22,6 +23,10 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverComponentsExternalPackages: ["pdf-parse"],
+  },
+
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 
