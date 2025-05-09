@@ -55,6 +55,8 @@ export async function POST(request: NextRequest) {
       4. 3-5 areas for improvement
       5. Any formatting issues detected
       6. Content suggestions to improve impact
+      7. Suggest Job options based on the resume content
+      8. if resume score is less than 50% then reject the resume and suggest to improve it.
   
       Format your response as a JSON object with the following structure:
       {
@@ -63,7 +65,9 @@ export async function POST(request: NextRequest) {
         "strengths": ["string", "string", ...],
         "improvements": ["string", "string", ...],
         "formatIssues": ["string", "string", ...],
-        "contentSuggestions": ["string", "string", ...]
+        "contentSuggestions": ["string", "string", ...],
+        "jobSuggestions": ["string", "string", ...],
+        "reject": boolean
       }
   
       Here is the resume to analyze:
@@ -87,7 +91,9 @@ export async function POST(request: NextRequest) {
             strengths: ["Unable to determine strengths"],
             improvements: ["Please check if the resume format is standard"],
             formatIssues: ["Resume format may be non-standard or complex"],
-            contentSuggestions: ["Consider using a simpler format"]
+            contentSuggestions: ["Consider using a simpler format"],
+            jobsSuggestions: ["Software Engineer", "Data Analyst"],
+            reject: true,
           };
       
       return NextResponse.json(analysisData);

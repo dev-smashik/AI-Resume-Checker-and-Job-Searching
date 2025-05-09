@@ -9,6 +9,8 @@ interface ResumeAnalysisProps {
     improvements: string[];
     formatIssues: string[];
     contentSuggestions: string[];
+    jobSuggestions: string[];
+    reject: string[];
   };
 }
 
@@ -16,7 +18,7 @@ export function ResumeAnalysis({ analysis }: ResumeAnalysisProps) {
   const [activeTab, setActiveTab] = useState<string>("overview");
   
   const getScoreColor = (score: number) => {
-    if (score >= 80) return "text-green-600";
+    if (score >= 65) return "text-green-600";
     if (score >= 60) return "text-yellow-600";
     return "text-red-600";
   };
@@ -29,6 +31,7 @@ export function ResumeAnalysis({ analysis }: ResumeAnalysisProps) {
           <span className="mr-2 font-medium">Resume Score:</span>
           <span className={`text-xl font-bold ${getScoreColor(analysis.score)}`}>
             {analysis.score}%
+            : {analysis.reject ? "Rejected" : "Accepted"}
           </span>
         </div>
       </div>
@@ -58,6 +61,16 @@ export function ResumeAnalysis({ analysis }: ResumeAnalysisProps) {
         >
           Improvements
         </button>
+
+        <button
+          className={`py-2 px-4 font-medium ${
+            activeTab === "jobsuggestion" ? "border-b-2 border-blue-500 text-blue-600" : "text-gray-500"
+          }`}
+          onClick={() => setActiveTab("jobsuggestion")}
+        >
+          jobsuggestion
+        </button>
+        
       </div>
 
       <div className="mt-4">
@@ -110,6 +123,18 @@ export function ResumeAnalysis({ analysis }: ResumeAnalysisProps) {
             </ul>
           </div>
         )}
+
+        {activeTab === "jobsuggestion" && (
+          <div>
+            <h3 className="text-lg font-medium mb-2">Job Suggestions</h3>
+            <ul className="list-disc pl-5 space-y-2">
+              {analysis.jobSuggestions.map((jobSuggestion, index) => (
+                <li key={index} className="text-gray-700">{jobSuggestion}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
       </div>
     </div>
   );
