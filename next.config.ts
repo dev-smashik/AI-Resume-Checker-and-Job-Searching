@@ -14,7 +14,7 @@ const config: NextConfig = {
     ],
     domains: ['images.unsplash.com', 'avatars.githubusercontent.com'],
   },
-  serverExternalPackages: ["pdf-parse"],
+  serverExternalPackages: ["pdf-parse",'@prisma/client', 'prisma'],
   typescript: {
     ignoreBuildErrors: true, // Temporarily ignore TS errors during build
   },
