@@ -39,6 +39,7 @@
     "@uploadthing/react": "^7.1.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.9.4",
     "inngest": "^3.30.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.473.0",
